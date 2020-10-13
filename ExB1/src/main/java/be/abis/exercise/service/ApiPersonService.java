@@ -36,16 +36,12 @@ public class ApiPersonService implements PersonService {
 		Person p = restTemplate.getForObject(baseUrl+"/"+id,Person.class);
 		return p;
 	}
-	
-	
 		
-	
 	@Override
 	public ArrayList<Person> getAllPersons() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	
 	@Override
 	public void addPerson(Person p) throws IOException {
@@ -55,14 +51,15 @@ public class ApiPersonService implements PersonService {
 
 	@Override
 	public void deletePerson(int id) throws PersonCanNotBeDeletedException {
-		// TODO Auto-generated method stub
-		
+		System.out.println("B1 ApiPersonService in deletePerson "+id);
+		restTemplate.delete(baseUrl+"/"+id,Person.class);			
 	}
 
 	@Override
 	public void changePassword(Person p, String newPswd) throws IOException {
-		// TODO Auto-generated method stub
-		
+		System.out.println("B1 ApiPersonService in changePassword ");
+		p.setPassword(newPswd);
+		restTemplate.put(baseUrl+"/"+p.getPersonId(),p);
 	}
 
 	

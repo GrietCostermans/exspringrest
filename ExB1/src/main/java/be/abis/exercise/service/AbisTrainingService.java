@@ -56,12 +56,14 @@ public class AbisTrainingService implements TrainingService {
 
 	@Override
 	public void deletePerson(int id) throws PersonCanNotBeDeletedException {
-				
+		System.out.println("B1 AbistrainingService in deleteperson() ");
+		personService.deletePerson(id);
 	}
 
 	@Override
 	public void changePassword(Person p, String newPswd) throws IOException {
-				
+		System.out.println("B1 AbistrainingService in changePassword");
+		personService.changePassword(p, newPswd);
 	}
 
 	@Override
