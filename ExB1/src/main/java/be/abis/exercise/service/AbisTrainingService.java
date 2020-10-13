@@ -38,8 +38,8 @@ public class AbisTrainingService implements TrainingService {
 
 	@Override
 	public Person findPerson(int id) {
-			
-		return null;
+		System.out.println("B1 AbistrainingService in findperson(int) ");
+		return personService.findPerson(id);	
 	}
 
 	@Override
@@ -50,7 +50,8 @@ public class AbisTrainingService implements TrainingService {
 
 	@Override
 	public void addPerson(Person p) throws IOException {
-		
+		System.out.println("B1 AbistrainingService in addperson() ");
+		personService.addPerson(p);		
 	}
 
 	@Override

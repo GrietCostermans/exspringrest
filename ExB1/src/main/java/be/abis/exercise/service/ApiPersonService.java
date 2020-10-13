@@ -20,12 +20,6 @@ public class ApiPersonService implements PersonService {
 			
 		
 	@Override
-	public Person findPerson(int id) {
-		//Person p = restTemplate.getForObject(baseUrl, responseType)
-		return null;
-	}
-	
-	@Override
 	public Person findPerson(String emailAddress, String passWord) {
 		System.out.println("B1 ApiPersonService in findperson() "+emailAddress+passWord);
 		Login login = new Login();
@@ -33,6 +27,13 @@ public class ApiPersonService implements PersonService {
 		login.setPassword(passWord);
 		System.out.println(login.getEmail()+" "+login.getPassword());
 		Person p = restTemplate.postForObject(baseUrl+"/login",login,Person.class);
+		return p;
+	}
+	
+	@Override
+	public Person findPerson(int id) {
+		System.out.println("B1 ApiPersonService in findperson(int) "+id);
+		Person p = restTemplate.getForObject(baseUrl+"/"+id,Person.class);
 		return p;
 	}
 	
@@ -48,8 +49,8 @@ public class ApiPersonService implements PersonService {
 	
 	@Override
 	public void addPerson(Person p) throws IOException {
-		// TODO Auto-generated method stub
-		
+		System.out.println("B1 ApiPersonService in addPerson "+p);
+		restTemplate.postForObject(baseUrl+"/",p,Person.class);			
 	}
 
 	@Override
