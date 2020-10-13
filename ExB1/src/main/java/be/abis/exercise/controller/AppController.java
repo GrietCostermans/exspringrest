@@ -50,6 +50,7 @@ public class AppController {
 		if (result.hasErrors()) {
 			return "login";
 		}
+		System.out.println("B1 AppController: in welcome scherm");
 		loggedInPerson =trainingService.findPerson(login.getEmail(),login.getPassword());
 		if (loggedInPerson==null) {
 		   result.reject("email", "Login failed, try again");

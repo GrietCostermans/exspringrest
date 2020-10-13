@@ -27,7 +27,7 @@ public class ApiPersonService implements PersonService {
 	
 	@Override
 	public Person findPerson(String emailAddress, String passWord) {
-		System.out.println("in findperson"+emailAddress+passWord);
+		System.out.println("B1 ApiPersonService in findperson() "+emailAddress+passWord);
 		Login login = new Login();
 		login.setEmail(emailAddress);
 		login.setPassword(passWord);

@@ -18,6 +18,8 @@ public class AbisTrainingService implements TrainingService {
     
 	@Autowired
 	private CourseService courseService;	
+	@Autowired
+	private PersonService personService;	
 	
 	@Override
 	public CourseService getCourseService() {
@@ -36,12 +38,14 @@ public class AbisTrainingService implements TrainingService {
 
 	@Override
 	public Person findPerson(int id) {
+			
 		return null;
 	}
 
 	@Override
 	public Person findPerson(String emailAddress, String passWord) {
-		return null;
+		System.out.println("B1 AbistrainingService in findperson() ");
+		return personService.findPerson(emailAddress, passWord);
 	}
 
 	@Override
