@@ -58,8 +58,8 @@ public class PersonController {
 	
 	@PostMapping("login")
 	public Person findPersonWithLogin(@RequestBody Login login) {
-		System.out.println("A2 PersonController findPersonWithLogin "+login.getEmailAddress()+" "+login.getPassword());
-		return personService.findPerson(login.getEmailAddress(),login.getPassword());
+		System.out.println("A2 PersonController findPersonWithLogin "+login.getEmail()+" "+login.getPassword());
+		return personService.findPerson(login.getEmail(),login.getPassword());
 	}  // POST http://localhost:8085/exercise/api/persons/login
 	
 	
