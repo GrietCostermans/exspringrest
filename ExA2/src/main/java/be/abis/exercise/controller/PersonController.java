@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import be.abis.exercise.exception.PersonCanNotBeDeletedException;
+import be.abis.exercise.model.Login;
 import be.abis.exercise.model.Person;
 import be.abis.exercise.service.PersonService;
 
@@ -43,22 +44,21 @@ public class PersonController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}  // POST http://localhost:8085/exercise/api/persons/ in postman met (aangepaste) copy van de body van de GET 
 	
+	@PutMapping(path="{id}")
+	public void changePassword(@PathVariable("id") int id, @RequestBody Person person) {
+		try {
+			personService.changePassword(person, person.getPassword());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	} // PUT http://localhost:8085/exercise/api/persons/10 	
 	
-	
-	
-	
-	/*
-    Person findPerson(String emailAddress, String passWord);
-    void addPerson(Person p) throws IOException;
-    void changePassword(Person p, String newPswd) throws IOException;
-
-	 */
-	
-	
-	
-	
+	@PostMapping("login")
+	public Person findPersonWithLogin(@RequestBody Login login) {
+		return personService.findPerson(login.getEmailAddress(),login.getPassword());
+	}  // POST http://localhost:8085/exercise/api/persons/login
+		
 	
 }
