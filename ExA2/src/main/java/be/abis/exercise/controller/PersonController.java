@@ -3,6 +3,7 @@ package be.abis.exercise.controller;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,12 +19,12 @@ import be.abis.exercise.model.Person;
 import be.abis.exercise.service.PersonService;
 
 @RestController
-@RequestMapping("persons")
+@RequestMapping(path="persons") //ook in pom aangepast voor xml
 public class PersonController {
 	@Autowired
 	PersonService personService;
 	
-	@GetMapping("{id}")
+	@GetMapping(path="{id}")
 	public Person findPerson(@PathVariable("id") int id) {
 		return personService.findPerson(id);
 	}  // http://localhost:8085/exercise/api/persons/1
@@ -59,6 +60,8 @@ public class PersonController {
 	public Person findPersonWithLogin(@RequestBody Login login) {
 		return personService.findPerson(login.getEmailAddress(),login.getPassword());
 	}  // POST http://localhost:8085/exercise/api/persons/login
+	
+	
 		
 	
 }
